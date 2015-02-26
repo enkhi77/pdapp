@@ -2,14 +2,14 @@
 
 angular.module('pdappApp')
   .controller('MainCtrl', function ($scope, $http, Auth, socket) {
-    $scope.awesomeThings = [];
+    $scope.prducts = [];
 
     $scope.currentUser = Auth.getCurrentUser();
     console.log('Current User', $scope.currentUser);
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
+    $http.get('/api/products').success(function(productdata) {
+      $scope.products = productdata;
+      socket.syncUpdates('products', $scope.products);
     });
 
     $scope.isCollapsed = true;
@@ -21,19 +21,19 @@ angular.module('pdappApp')
       isopen: false
     };
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
+    $scope.addProduct = function() {
+      if($scope.newProduct === '') {
         return;
       }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
+      $http.post('/api/products', { name: $scope.newProduct });
+      $scope.newProduct = '';
     };
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
+    $scope.deleteProduct = function(thing) {
+      $http.delete('/api/products/' + thing._id);
     };
 
     $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
+      socket.unsyncUpdates('products');
     });
   });

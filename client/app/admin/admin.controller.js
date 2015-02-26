@@ -1,11 +1,28 @@
 'use strict';
 
 angular.module('pdappApp')
-  .controller('AdminCtrl', function ($scope, $http, $location, Auth, User) {
+  .controller('AdminCtrl', function ($scope, $http, $state, Auth, User) {
     $scope.user = {};
     $scope.errors = {};
     $scope.rolestatus = {
       isopen: false
+    };
+
+    $http.get('/api/products').success(function(productdata) {
+      $scope.products = productdata;
+      socket.syncUpdates('products', $scope.products);
+    });
+
+    $scope.addProduct = function() {
+      if($scope.newProduct === '') {
+        return;
+      }
+      $http.post('/api/products', { name: $scope.newProduct });
+      $scope.newProduct = '';
+    };
+
+    $scope.deleteProduct = function(thing) {
+      $http.delete('/api/products/' + thing._id);
     };
 
     $scope.register = function(form) {
@@ -25,7 +42,7 @@ angular.module('pdappApp')
           .then( function(res) {
             console.log('Create response', res)
             // Account created, redirect to home
-            $location.path('/admin/reps');
+            $state.reload();
           })
           .catch( function(err) {
             console.log('Create error', err)

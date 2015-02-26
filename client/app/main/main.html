@@ -1,5 +1,14 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <label>Sales Rep</label><br>
+      {{currentUser.name}}<br>
+      {{currentUser.address}} {{currentUser.city}}, {{currentUser.state}} {{currentUser.zip}}<br>
+      {{currentUser.phone}}
+    </div>
+  </div>
+</div>
 <div ui-view>
 
 </div>

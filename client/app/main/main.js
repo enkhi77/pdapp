@@ -3,6 +3,11 @@
 angular.module('pdappApp')
   .config(function ($stateProvider) {
     $stateProvider
+      .state('default', {
+        url: '/',
+        templateUrl: 'app/account/login/login.html',
+        controller: 'LoginCtrl'
+      })
       .state('main', {
         abstract: true,
         url: '/main',

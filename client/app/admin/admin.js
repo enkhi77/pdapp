@@ -13,9 +13,9 @@ angular.module('pdappApp')
         url:'/products',
         templateUrl: 'app/admin/products.html'
       })
-      .state('admin.pricing', {
-        url:'/pricing',
-        templateUrl: 'app/admin/pricing.html'
+      .state('admin.labor', {
+        url:'/labor',
+        templateUrl: 'app/admin/labor.html'
       })
       .state('admin.quotes', {
         url:'/quotes',

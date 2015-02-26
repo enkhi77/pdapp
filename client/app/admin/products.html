@@ -1,3 +1,9 @@
-<div class="maincontainer container-fluid">
-  <h3>Product placeholder</h3>
+<div class="maincontainer container">
+  <h3>Manage Product</h3>
+  <div class="row">
+    <div class="well" ng-repeat="product in products">
+      <div>{{product.name}}</div>
+      <div>{{product.info}}</div>
+    </div>
+  </div>
 </div>

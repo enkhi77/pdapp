@@ -73,6 +73,15 @@ angular.module('pdappApp')
       },
 
       /**
+       * Update current user
+       *
+       */
+      updateUser: function(user, callback) {
+        console.log('Updating User', user);
+        var cb = callback || angular.noop;
+      },
+
+      /**
        * Change password
        *
        * @param  {String}   oldPassword

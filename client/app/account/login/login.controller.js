@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pdappApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location) {
+  .controller('LoginCtrl', function ($scope, Auth, $state) {
     $scope.user = {};
     $scope.errors = {};
 
@@ -15,7 +15,7 @@ angular.module('pdappApp')
         })
         .then( function() {
           // Logged in, redirect to home
-          $location.path('/');
+          $state.go('main.quote')
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
