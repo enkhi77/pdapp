@@ -6,6 +6,31 @@ angular.module('pdappApp')
       .state('admin', {
         url: '/admin',
         templateUrl: 'app/admin/admin.html',
-        controller: 'AdminCtrl'
+        controller: 'AdminCtrl',
+        authenticate: true
+      })
+      .state('admin.products', {
+        url:'/products',
+        templateUrl: 'app/admin/products.html'
+      })
+      .state('admin.pricing', {
+        url:'/pricing',
+        templateUrl: 'app/admin/pricing.html'
+      })
+      .state('admin.quotes', {
+        url:'/quotes',
+        templateUrl: 'app/admin/quotes.html'
+      })
+      .state('admin.reps', {
+        url: '/reps',
+        templateUrl: 'app/admin/reps.html'
+      })
+      .state('admin.rebate', {
+        url: '/rebate',
+        templateUrl: 'app/admin/rebate.html'
+      })
+      .state('admin.powerco', {
+        url: '/powerco',
+        templateUrl: 'app/admin/powerco.html'
       });
   });

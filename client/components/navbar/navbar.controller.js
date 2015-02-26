@@ -3,11 +3,20 @@
 angular.module('pdappApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
+      'title': 'Create Quote',
+      'link': '/main/quote'
+    },{
+      'title': 'Archive',
+      'link': '/main/archive'
+    },{
+      'title': 'Order',
+      'link': '/main/order'
     }];
 
     $scope.isCollapsed = true;
+    $scope.toggled = function(open) {
+      console.log('Dropdown is now: ', open);
+    };
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;

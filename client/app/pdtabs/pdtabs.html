@@ -1,0 +1,129 @@
+<tabset>
+  <tab heading="Motors & Anti Sweat">
+    <h2>Motors</h2>
+
+    <div ng-repeat="motor in motors">
+      <form class="form-horizontal row">
+        <div class="col-sm-2">
+          <input type="number" class="form-control" value="0">
+        </div>
+        <label class="control-label">{{motor.partNumber}} - {{motor.name}}</label>
+      </form>
+      <br/>
+    </div>
+
+    <h2>Anti-Sweat Device</h2>
+
+    <div ng-repeat="antisweat in antisweats">
+      <form class="form-horizontal row">
+        <div class="col-sm-2">
+          <input type="number" class="form-control" value="0">
+        </div>
+        <label class="control-label">{{antisweat.partNumber}} - {{antisweat.name}}</label>
+      </form>
+      <br/>
+    </div>
+
+    <h2>Anti-Sweat Device Information</h2>
+
+    <form class="form-horizontal row">
+      <div class="form-group col-sm-3">
+        <div class="col-sm-5">
+          <input class="form-control" type="number" value="0">
+        </div>
+        <label class="control-label">Number of Doors</label>
+      </div>
+      <div class="form-group col-sm-3">
+        <div class="col-sm-5">
+          <input class="form-control" type="number" value="0">
+        </div>
+        <label class="control-label">Doors per Set</label>
+      </div>
+      <div class="form-group col-sm-3">
+        <div class="col-sm-5">
+          <input class="form-control" type="number" value="0">
+        </div>
+        <label class="control-label">Amps per Door</label>
+      </div>
+      <div class="form-group col-sm-3">
+        <div class="col-sm-5">
+          <input class="form-control" type="number" value="0">
+        </div>
+        <label class="control-label">Linear Ft of Doors</label>
+      </div>
+    </form>
+  </tab>
+
+  <tab heading="Cooler LED">
+    <h2>Cooler LED</h2><br/>
+
+    <div ng-repeat="prodgroup in coolerleds">
+      <h3>{{prodgroup.productname}}</h3>
+
+      <div ng-repeat="product in prodgroup.products">
+        <form class="form-horizontal row">
+          <div class="col-sm-2">
+            <input type="number" class="form-control" value="0">
+          </div>
+          <label class="control-label">{{product.partNumber}} - {{product.name}}</label>
+        </form>
+        <br/>
+      </div>
+    </div>
+
+    <h2>Cooler LED Information</h2>
+
+    <form class="form-horizontal row">
+      <div class="form-group col-sm-3">
+        <div class="col-sm-5">
+          <input class="form-control" type="number" value="0">
+        </div>
+        <label class="control-label">Number of Doors</label>
+      </div>
+    </form>
+  </tab>
+
+  <tab heading="LED Lighting">
+    <h2>LED Lighting</h2>
+
+    <div ng-repeat="company in ledlights">
+      <h3>{{company.companyname}}</h3>
+
+      <div ng-repeat="product in company.products">
+        <h4>{{product.name}}</h4>
+
+        <form class="form-inline">
+          <div class="form-group">
+            Existing Wattage<br/>
+            <input type="number" class="form-control" value="0">
+          </div>
+          <div class="form-group">
+            New Wattage <br/>
+            <input type="number" class="form-control" value="0">
+          </div>
+          <div class="form-group">
+            QTY<br/>
+            <input type="number" class="form-control" value="0">
+          </div>
+          <div class="form-group">
+            <label>{{product.partNumber}} - {{product.description}}</label>
+          </div>
+        </form>
+        <br/>
+      </div>
+    </div>
+
+    <h2>LED Lighting Information</h2>
+
+    <form class="form-horizontal row">
+      <div class="form-group col-sm-3">
+        <div class="col-sm-5">
+          <input class="form-control" type="number" value="0">
+        </div>
+        <label class="control-label">Daily Hours of Use</label>
+      </div>
+    </form>
+  </tab>
+</tabset>
+<button type="submit" class="btn">Submit</button>
+

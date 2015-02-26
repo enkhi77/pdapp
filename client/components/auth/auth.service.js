@@ -57,6 +57,7 @@ angular.module('pdappApp')
        * @return {Promise}
        */
       createUser: function(user, callback) {
+        console.log('Creating User', user)
         var cb = callback || angular.noop;
 
         return User.save(user,

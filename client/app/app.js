@@ -6,11 +6,12 @@ angular.module('pdappApp', [
   'ngSanitize',
   'btford.socket-io',
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'restangular'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
-      .otherwise('/');
+      .otherwise('/main/quote');
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');

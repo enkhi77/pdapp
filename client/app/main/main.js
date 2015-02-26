@@ -4,8 +4,22 @@ angular.module('pdappApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('main', {
-        url: '/',
+        abstract: true,
+        url: '/main',
         templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
-      });
+        controller: 'MainCtrl',
+        authenticate: true
+      })
+      .state('main.quote', {
+        url: '/quote',
+        templateUrl: 'app/main/quote.html'
+      })
+      .state('main.archive', {
+        url: '/archive',
+        templateUrl: 'app/main/archive.html'
+      })
+      .state('main.order', {
+        url: '/order',
+        templateUrl: 'app/main/order.html'
+      })
   });
