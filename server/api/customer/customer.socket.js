@@ -4,21 +4,21 @@
 
 'use strict';
 
-var Product = require('./product.model');
+var Customer = require('./customer.model');
 
 exports.register = function(socket) {
-  Product.schema.post('save', function (doc) {
+  Customer.schema.post('save', function (doc) {
     onSave(socket, doc);
   });
-  Product.schema.post('remove', function (doc) {
+  Customer.schema.post('remove', function (doc) {
     onRemove(socket, doc);
   });
 }
 
 function onSave(socket, doc, cb) {
-  socket.emit('product:save', doc);
+  socket.emit('customer:save', doc);
 }
 
 function onRemove(socket, doc, cb) {
-  socket.emit('product:remove', doc);
+  socket.emit('customer:remove', doc);
 }

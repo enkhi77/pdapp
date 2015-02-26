@@ -1,12 +1,3 @@
-/**
- * Using Rails-like standard naming convention for endpoints.
- * GET     /products              ->  index
- * POST    /products              ->  create
- * GET     /products/:id          ->  show
- * PUT     /products/:id          ->  update
- * DELETE  /products/:id          ->  destroy
- */
-
 'use strict';
 
 var _ = require('lodash');

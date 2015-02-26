@@ -20,17 +20,21 @@ angular.module('pdappApp')
         var cb = callback || angular.noop;
         var deferred = $q.defer();
 
+        console.log('Logging in', user);
+
         $http.post('/auth/local', {
           email: user.email,
           password: user.password
         }).
         success(function(data) {
+            console.log('Logged in', data)
           $cookieStore.put('token', data.token);
           currentUser = User.get();
           deferred.resolve(data);
           return cb();
         }).
         error(function(err) {
+            console.log('Error', err);
           this.logout();
           deferred.reject(err);
           return cb(err);

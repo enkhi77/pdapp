@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pdappApp')
-  .controller('AdminCtrl', function ($scope, $http, $state, Auth, User) {
+  .controller('AdminCtrl', function ($scope, $http, $state, Auth, User, socket) {
     console.log('invoking admin controller', Auth.isAdmin())
     if(!Auth.isAdmin()){
       $state.go('login')
@@ -13,9 +13,33 @@ angular.module('pdappApp')
       isopen: false
     };
 
+    $scope.products = [];
+    $scope.quotes = [];
+    $scope.orders = [];
+    $scope.customers = [];
+
     $http.get('/api/products').success(function(productdata) {
       $scope.products = productdata;
-      //socket.syncUpdates('product', $scope.products);
+      console.log('Products', $scope.products);
+      socket.syncUpdates('products', $scope.products);
+    });
+
+    $http.get('/api/quotes').success(function(quotedata) {
+      $scope.quotes = quotedata;
+      console.log('Quotes', $scope.quotes);
+      socket.syncUpdates('quotes', $scope.quotes);
+    });
+
+    $http.get('/api/orders').success(function(orderdata) {
+      $scope.orders = orderdata;
+      console.log('Orders', $scope.orders);
+      socket.syncUpdates('orders', $scope.orders);
+    });
+
+    $http.get('/api/customers').success(function(customerdata) {
+      $scope.customers = customerdata;
+      console.log('Customers', $scope.customers);
+      socket.syncUpdates('customers', $scope.customers);
     });
 
     $scope.addProduct = function() {
