@@ -62,8 +62,8 @@ angular.module('pdappApp')
 
         return User.save(user,
           function(data) {
-            $cookieStore.put('token', data.token);
-            currentUser = User.get();
+            //$cookieStore.put('token', data.token);
+            //currentUser = User.get();
             return cb(user);
           },
           function(err) {

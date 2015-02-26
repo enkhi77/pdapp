@@ -1,9 +1,129 @@
-<div class="maincontainer container">
-  <h3>Manage Product</h3>
+<div class="container">
   <div class="row">
+    <h3>Add Product</h3>
+    <form class="form" name="form" ng-submit="addProduct(form)" novalidate>
+
+      <div class="form-group" ng-class="{ 'has-success': form.company.$valid && submitted, 'has-error': form.company.$invalid && submitted }">
+        <label>Product Company</label>
+
+        <input type="text" name="company" class="form-control" ng-model="newProduct.company"
+               required/>
+
+        <p class="help-block" ng-show="form.company.$error.required && submitted">
+          A Company is required
+        </p>
+      </div>
+
+      <div class="form-group" ng-class="{ 'has-success': form.category.$valid && submitted, 'has-error': form.category.$invalid && submitted }">
+        <label>Product Category</label>
+
+        <input type="text" name="category" class="form-control" ng-model="newProduct.category"
+               required
+               mongoose-error/>
+      </div>
+
+      <div class="form-group" ng-class="{ 'has-success': form.partnum.$valid && submitted, 'has-error': form.partnum.$invalid && submitted }">
+        <label>Product Number</label>
+
+        <input type="text" name="address" class="form-control" ng-model="newProduct.partnum"
+               ng-minlength="3"
+               required
+               mongoose-error/>
+
+        <p class="help-block"
+           ng-show="(form.partnum.$error.minlength || form.partnum.$error.required) && submitted">
+          Part Number must be at least 3 characters.
+        </p>
+
+        <p class="help-block" ng-show="form.partnum.$error.mongoose">
+          {{ errors.partnum }}
+        </p>
+      </div>
+
+      <div class="form-group" ng-class="{ 'has-success': form.price.$valid && submitted, 'has-error': form.price.$invalid && submitted }">
+        <label>Price per unit</label>
+
+        <input type="number" name="price" class="form-control" ng-model="newProduct.price"
+               required
+               mongoose-error/>
+
+        <p class="help-block"
+           ng-show="(form.price.$error.minlength || form.price.$error.required) && submitted">
+          Price must be at least 3 characters.
+        </p>
+
+        <p class="help-block" ng-show="form.price.$error.mongoose">
+          {{ errors.price }}
+        </p>
+      </div>
+
+      <div class="form-group" ng-class="{ 'has-success': form.state.$valid && submitted, 'has-error': form.state.$invalid && submitted }">
+        <label>Wattage</label>
+
+        <input type="text" name="watt" class="form-control" ng-model="newProduct.watt" mongoose-error/>
+
+        <p class="help-block"
+           ng-show="(form.watt.$error.minlength || form.watt.$error.required) && submitted">
+          State must be at least 3 characters.
+        </p>
+
+        <p class="help-block" ng-show="form.watt.$error.mongoose">
+          {{ errors.watt }}
+        </p>
+      </div>
+
+      <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted, 'has-error': form.name.$invalid && submitted }">
+        <label>Product Description</label>
+
+        <input type="text" name="zip" class="form-control" ng-model="newProduct.name"
+               ng-minlength="5"
+               required
+               mongoose-error/>
+
+        <p class="help-block"
+           ng-show="(form.name.$error.minlength || form.name.$error.required) && submitted">
+          Description must be at least 5 characters.
+        </p>
+
+        <p class="help-block" ng-show="form.name.$error.mongoose">
+          {{ errors.name }}
+        </p>
+      </div>
+
+      <div class="form-group" ng-class="{ 'has-success': form.phone.$valid && submitted, 'has-error': form.phone.$invalid && submitted }">
+        <label>Phone</label>
+
+        <input type="text" name="phone" class="form-control" ng-model="newProduct.phone"
+               ng-minlength="3"
+               required
+               mongoose-error/>
+
+        <p class="help-block"
+           ng-show="(form.phone.$error.minlength || form.phone.$error.required) && submitted">
+          Phone must be at least 3 characters.
+        </p>
+
+        <p class="help-block" ng-show="form.phone.$error.mongoose">
+          {{ errors.phone }}
+        </p>
+      </div>
+
+      <div>
+        <button class="btn btn-primary btn-sm btn-login" type="submit">
+          Update
+        </button>
+      </div>
+
+    </form>
+  </div>
+  <div class="row">
+    <h3>Manage Product</h3>
     <div class="well" ng-repeat="product in products">
+      <div>{{product._id}}</div>
+      <div>{{product.company}}</div>
       <div>{{product.name}}</div>
-      <div>{{product.info}}</div>
+      <div>{{product.partnum}}</div>
+      <div>{{product.category}}</div>
     </div>
   </div>
 </div>

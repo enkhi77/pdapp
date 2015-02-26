@@ -2,6 +2,11 @@
 
 angular.module('pdappApp')
   .controller('AdminCtrl', function ($scope, $http, $state, Auth, User) {
+    console.log('invoking admin controller', Auth.isAdmin())
+    if(!Auth.isAdmin()){
+      $state.go('login')
+    }
+
     $scope.user = {};
     $scope.errors = {};
     $scope.rolestatus = {
@@ -10,19 +15,27 @@ angular.module('pdappApp')
 
     $http.get('/api/products').success(function(productdata) {
       $scope.products = productdata;
-      socket.syncUpdates('products', $scope.products);
+      //socket.syncUpdates('product', $scope.products);
     });
 
     $scope.addProduct = function() {
       if($scope.newProduct === '') {
         return;
       }
-      $http.post('/api/products', { name: $scope.newProduct });
+      $http.post('/api/products', {
+        company: $scope.newProduct.company,
+        category: $scope.newProduct.category,
+        partnum: $scope.newProduct.partnum,
+        price: $scope.newProduct.price,
+        watt: $scope.newProduct.watt,
+        estar: $scope.newProduct.estar,
+        name: $scope.newProduct.name,
+      });
       $scope.newProduct = '';
     };
 
-    $scope.deleteProduct = function(thing) {
-      $http.delete('/api/products/' + thing._id);
+    $scope.deleteProduct = function(product) {
+      $http.delete('/api/products/' + product._id);
     };
 
     $scope.register = function(form) {
@@ -35,17 +48,18 @@ angular.module('pdappApp')
           address: $scope.user.address,
           city: $scope.user.city,
           state: $scope.user.state,
+          zip: $scope.user.zip,
           phone: $scope.user.phone,
           role: $scope.user.role,
           password: $scope.user.password
         })
           .then( function(res) {
-            console.log('Create response', res)
+            console.log('Create response', res);
             // Account created, redirect to home
             $state.reload();
           })
           .catch( function(err) {
-            console.log('Create error', err)
+            console.log('Create error', err);
             err = err.data;
             $scope.errors = {};
 
