@@ -18,12 +18,14 @@
         <li ng-if="isAdmin()" class="dropdown" dropdown on-toggle="toggled(open)">
           <a class="dropdown-toggle" dropdown-toggle>Admin <b class="caret"></b></a>
           <ul class="dropdown-menu" role="menu">
+            <li><a ui-sref="admin.quotes">View Quotes</a></li>
+            <li><a ui-sref="admin.orders">View Orders</a></li>
             <li><a ui-sref="admin.products">Manage Products</a></li>
             <li><a ui-sref="admin.labor">Manage Labor</a></li>
-            <li><a ui-sref="admin.quotes">View Quotes</a></li>
             <li><a ui-sref="admin.reps">Manage Sales Reps</a></li>
             <li><a ui-sref="admin.rebate">Manage Rebates</a></li>
             <li><a ui-sref="admin.powerco">Manage Power Companies</a></li>
+            <li><a ui-sref="admin.installer">Manage Installers</a></li>
           </ul>
         </li>
       </ul>

@@ -8,14 +8,14 @@
         <div class="form-group col-sm-6">
           <label class="col-sm-2 control-label">Company Name</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" placeholder="Company Name">
+            <input class="form-control" type="text" placeholder="Company Name" ng-model="customer.name">
           </div>
         </div>
 
         <div class="form-group col-sm-6">
           <label class="col-sm-2 control-label">Phone Number</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" placeholder="Phone Number">
+            <input class="form-control" type="text" placeholder="Phone Number" ng-model="customer.phone">
           </div>
         </div>
       </div>
@@ -24,14 +24,14 @@
         <div class="form-group col-sm-6">
           <label class="col-sm-2 control-label">Contact</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" placeholder="Contact">
+            <input class="form-control" type="text" placeholder="Contact" ng-model="customer.contact">
           </div>
         </div>
 
         <div class="form-group col-sm-6">
           <label class="col-sm-2 control-label">City</label>
           <div class="col-sm-4">
-            <input class="form-control" type="text" placeholder="City">
+            <input class="form-control" type="text" placeholder="City" ng-model="customer.city">
           </div>
         </div>
       </div>
@@ -40,14 +40,14 @@
         <div class="form-group col-sm-6">
           <label class="col-sm-2 control-label">Address</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" placeholder="Address">
+            <input class="form-control" type="text" placeholder="Address" ng-model="customer.address">
           </div>
         </div>
 
         <div class="form-group col-sm-6">
           <label class="col-sm-2 control-label">State</label>
           <div class="col-sm-4">
-            <input class="form-control" type="text" placeholder="State">
+            <input class="form-control" type="text" placeholder="State" ng-model="customer.state">
           </div>
         </div>
       </div>
@@ -55,14 +55,14 @@
       <div class="row">
         <div class="form-group col-sm-6">
           <div class="col-sm-offset-2 col-sm-10">
-            <input class="form-control" type="text" placeholder="Address 2">
+            <input class="form-control" type="text" placeholder="Address 2" ng-model="customer.address2">
           </div>
         </div>
 
         <div class="form-group col-sm-6">
           <label class="col-sm-2 control-label">Zip</label>
           <div class="col-sm-4">
-            <input class="form-control" type="text" placeholder="Zip">
+            <input class="form-control" type="text" placeholder="Zip" ng-model="customer.zip">
           </div>
         </div>
       </div>
@@ -71,13 +71,14 @@
         <div class="form-group col-sm-6">
           <label class="col-sm-2 control-label">Energy Company</label>
           <div class="col-sm-5 btn-group" dropdown is-open="status1.isopen">
-            <button type="button" class="btn btn-default btn-block dropdown-toggle" dropdown-toggle>
-              Energy Company <span class="caret"></span>
+            <button type="button" class="btn btn-default btn-block dropdown-toggle" dropdown-toggle ng-model="customer.energyco">
+              {{customer.energyco}} <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-              <li>Company 1</li>
-              <li>Company 2</li>
-              <li>Company 3</li>
+              <li><a href ng-click="customer.energyco = 'PECO'">PECO</a></li>
+              <li><a href ng-click="customer.energyco = 'PPL'">PPL</a></li>
+              <li><a href ng-click="customer.energyco = 'State of NJ'">State of NJ</a></li>
+              <li><a href ng-click="customer.energyco = 'Xcel'">Xcel</a></li>
             </ul>
           </div>
         </div>
@@ -85,13 +86,25 @@
         <div class="form-group col-sm-6">
           <label class="col-sm-2 control-label">Energy Rate</label>
           <div class="col-sm-5 btn-group" dropdown is-open="status2.isopen">
-            <button type="button" class="btn btn-default btn-block dropdown-toggle" dropdown-toggle>
-              Cents/Kwh <span class="caret"></span>
+            <button type="button" class="btn btn-default btn-block dropdown-toggle" dropdown-toggle ng-model="customer.energyrate">
+              {{customer.energyrate}} <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-              <li>Rate 1</li>
-              <li>Rate 2</li>
-              <li>Rate 3</li>
+              <li><a href ng-click="customer.energyrate = 0.07">0.07</a></li>
+              <li><a href ng-click="customer.energyrate = 0.075">0.075</a></li>
+              <li><a href ng-click="customer.energyrate = 0.08">0.08</a></li>
+              <li><a href ng-click="customer.energyrate = 0.085">0.085</a></li>
+              <li><a href ng-click="customer.energyrate = 0.09">0.09</a></li>
+              <li><a href ng-click="customer.energyrate = 0.095">0.095</a></li>
+              <li><a href ng-click="customer.energyrate = 0.10">0.10</a></li>
+              <li><a href ng-click="customer.energyrate = 0.105">0.105</a></li>
+              <li><a href ng-click="customer.energyrate = 0.11">0.11</a></li>
+              <li><a href ng-click="customer.energyrate = 0.115">0.115</a></li>
+              <li><a href ng-click="customer.energyrate = 0.12">0.12</a></li>
+              <li><a href ng-click="customer.energyrate = 0.125">0.125</a></li>
+              <li><a href ng-click="customer.energyrate = 0.13">0.13</a></li>
+              <li><a href ng-click="customer.energyrate = 0.135">0.135</a></li>
+              <li><a href ng-click="customer.energyrate = 0.14">0.14</a></li>
             </ul>
           </div>
         </div>
@@ -101,8 +114,7 @@
         <div class="form-group col-sm-6">
           <label class="col-sm-2 control-label">Non-Profit</label>
           <div class="col-sm-5">
-            <span><input class="form-control" type="radio" value="false" ng-model="cust">Yes <input class="form-control" type="radio" value="true" ng-model="cust">No</span>
-
+            <span class="col-xs-3"><input class="form-control" type="radio" value="false" ng-model="customer.">Yes</span><span class="col-xs-3"><input class="form-control" type="radio" value="true" ng-model="customer.">No</span>
           </div>
         </div>
       </div>

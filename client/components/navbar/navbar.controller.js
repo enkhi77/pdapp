@@ -4,10 +4,10 @@ angular.module('pdappApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
       'title': 'Create Quote',
-      'link': '/main/quote'
+      'link': '/main/createquote'
     },{
-      'title': 'Archive',
-      'link': '/main/archive'
+      'title': 'Quotes',
+      'link': '/main/quotes'
     },{
       'title': 'Order',
       'link': '/main/order'

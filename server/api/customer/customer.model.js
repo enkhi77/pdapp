@@ -5,8 +5,16 @@ var mongoose = require('mongoose'),
 
 var CustomerSchema = new Schema({
   name: String,
-  info: String,
-  active: Boolean
+  phone: String,
+  contact: String,
+  city: String,
+  address: String,
+  address2: String,
+  state: String,
+  zip: Number,
+  energyco: String,
+  energyrate: Number,
+  taxrate: Number
 });
 
 module.exports = mongoose.model('Customer', CustomerSchema);

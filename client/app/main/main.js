@@ -15,16 +15,16 @@ angular.module('pdappApp')
         controller: 'MainCtrl',
         authenticate: true
       })
-      .state('main.quote', {
-        url: '/quote',
-        templateUrl: 'app/main/quote.html'
+      .state('main.createquote', {
+        url: '/createquote',
+        templateUrl: 'app/main/partials/createquote.html'
       })
-      .state('main.archive', {
-        url: '/archive',
-        templateUrl: 'app/main/archive.html'
+      .state('main.quotes', {
+        url: '/quotes',
+        templateUrl: 'app/main/partials/quotes.html'
       })
       .state('main.order', {
         url: '/order',
-        templateUrl: 'app/main/order.html'
+        templateUrl: 'app/main/partials/order.html'
       })
   });

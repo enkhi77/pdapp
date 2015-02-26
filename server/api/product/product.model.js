@@ -4,9 +4,13 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var ProductSchema = new Schema({
+  company: String,
+  category: String,
+  partnum: String,
   name: String,
-  info: String,
-  active: Boolean
+  price: Number,
+  watt: Number,
+  estar: Boolean
 });
 
 module.exports = mongoose.model('Product', ProductSchema);

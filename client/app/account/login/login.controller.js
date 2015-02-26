@@ -15,7 +15,7 @@ angular.module('pdappApp')
         })
         .then( function() {
           // Logged in, redirect to home
-          $state.go('main.quote')
+          $state.go('main.createquote')
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
