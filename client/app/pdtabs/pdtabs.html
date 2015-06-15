@@ -3,18 +3,27 @@
   <tab heading="Motors">
     <div class="panel panel-default">
       <div class="panel-body">
-        <h3>Motors</h3>
-        <div ng-repeat="product in products | filter: {category: 'motor'}">
-          <form class="form-horizontal row">
-            <div class="col-sm-2">
-              <input type="number" class="form-control" value="0">
+        <section>      
+          <h3>Motors</h3>
+          <div class='row'>
+          <div class='col-sm-2'>
+            <select ng-model='selectedMotorCompany' ng-options="el.company for el in motorCompanyNames"></select>
+          </div>
+          <div class='col-sm-10'>
+            <div ng-repeat="product in products | filter: selectedMotorCompany | filter: {category: 'motor'}">
+              <form class="form-horizontal row">
+                <div class="col-sm-2">
+                  <input type="number" class="form-control" value="0">
+                </div>
+                <div class="col-sm-10">
+                  <label class="control-label">{{product.partnum}} - {{product.name}}
+                  </label>
+                </div>
+              </form>
             </div>
-            <div class="col-sm-10">
-              <label class="control-label">{{product.partnum}} - {{product.name}}</label>
-            </div>
-          </form>
-          <br/>
-        </div>
+          </div>
+        </section>
+
       </div>
     </div>
   </tab>
@@ -22,44 +31,57 @@
   <tab heading="Anti-Sweat">
     <div class="panel panel-default">
       <div class="panel-body">
-        <h3>Anti-Sweat Device</h3>
-        <div ng-repeat="product in products | filter: {category: 'antisweat'}">
-          <form class="form-horizontal row">
-            <div class="col-sm-2">
-              <input type="number" class="form-control" value="0">
+        <section>
+          <h3>Anti-Sweat Device</h3>
+          <div class='row'>
+            <div class='col-sm-2'>
+              <select ng-model='selectedAntiSweatCompany' ng-options='el.company for el in antiSweatCompanyNames'></select>
             </div>
-            <label class="control-label">{{product.partnum}} - {{product.name}}</label>
-          </form>
-          <br/>
-        </div>
+            <div class='col-sm-10'>
+              <div ng-repeat="product in products | filter: selectedAntiSweatCompany | filter: {category: 'antiSweat'}">
+                <form class="form-horizontal row">
+                  <div class="col-sm-2">
+                    <input type="number" class="form-control" value="0">
+                  </div>
+                  <div class='col-sm-10'>
+                    <label class="control-label">{{product.partnum}} - {{product.name}}
+                    </label>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <h3>Anti-Sweat Device Information</h3>
-        <form class="form-horizontal row">
-          <div class="form-group col-sm-3">
-            <div class="col-sm-5">
-              <input class="form-control" type="number" value="0">
+        <section>
+          <h3>Anti-Sweat Device Information</h3>
+          <form class="form-horizontal row">
+            <div class="form-group col-sm-3">
+              <div class="col-sm-5">
+                <input class="form-control" type="number" value="0">
+              </div>
+              <label class="control-label">Number of Doors</label>
             </div>
-            <label class="control-label">Number of Doors</label>
-          </div>
-          <div class="form-group col-sm-3">
-            <div class="col-sm-5">
-              <input class="form-control" type="number" value="0">
+            <div class="form-group col-sm-3">
+              <div class="col-sm-5">
+                <input class="form-control" type="number" value="0">
+              </div>
+              <label class="control-label">Doors per Set</label>
             </div>
-            <label class="control-label">Doors per Set</label>
-          </div>
-          <div class="form-group col-sm-3">
-            <div class="col-sm-5">
-              <input class="form-control" type="number" value="0">
+            <div class="form-group col-sm-3">
+              <div class="col-sm-5">
+                <input class="form-control" type="number" value="0">
+              </div>
+              <label class="control-label">Amps per Door</label>
             </div>
-            <label class="control-label">Amps per Door</label>
-          </div>
-          <div class="form-group col-sm-3">
-            <div class="col-sm-5">
-              <input class="form-control" type="number" value="0">
+            <div class="form-group col-sm-3">
+              <div class="col-sm-5">
+                <input class="form-control" type="number" value="0">
+              </div>
+              <label class="control-label">Linear Ft of Doors</label>
             </div>
-            <label class="control-label">Linear Ft of Doors</label>
-          </div>
-        </form>
+          </form>
+        </section>
       </div>
     </div>
   </tab>
@@ -67,81 +89,139 @@
   <tab heading="Cooler LED">
     <div class="panel panel-default">
       <div class="panel-body">
-        <h3>Cooler LED</h3><br/>
-
-        <div ng-repeat="product in products | filter: {category: 'coolerled'}">
-          <h3>{{product.company}}</h3>
-
-          <!--<div ng-repeat="product in products">-->
-            <form class="form-horizontal row">
-              <div class="col-sm-2">
-                <input type="number" class="form-control" value="0">
-              </div>
-              <label class="control-label">{{product.partNumber}} - {{product.name}}</label>
-            </form>
-            <br/>
-          </div>
-        </div>
-
-        <h3>Cooler LED Information</h3>
-
-        <form class="form-horizontal row">
-          <div class="form-group col-sm-3">
-            <div class="col-sm-5">
-              <input class="form-control" type="number" value="0">
+        <section>
+          <h3>Cooler LED</h3>
+          <div class='row'>
+            <div class='col-sm-2'>
+              <select ng-model='selectedCoolerLedCompany' ng-options='el.company for el in coolerLedCompanyNames'>
+              </select>
             </div>
-            <label class="control-label">Number of Doors</label>
+            <div class='col-sm-10'>
+              <div ng-repeat="product in products | filter: selectedCoolerLedCompany | filter: {category: 'coolerLed'}">
+                <form class="form-horizontal row">
+                  <div class="col-sm-2">
+                    <input type="number" class="form-control" value="0">
+                  </div>
+                  <div class='col-sm-10'>
+                    <label class="control-label">{{product.partnum}} - {{product.name}}
+                    </label>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
-        </form>
+        </section>
+        <section>
+          <h3>Cooler LED Information</h3>
+          <form class="form-horizontal row">
+            <div class="form-group col-sm-3">
+              <div class="col-sm-5">
+                <input class="form-control" type="number" value="0">
+              </div>
+              <label class="control-label">Number of Doors</label>
+            </div>
+          </form>
+        </section>
       </div>
     </div>
   </tab>
 
-  <tab heading="LED Lighting">
+  <tab heading="External LED Lighting">
     <div class="panel panel-default">
       <div class="panel-body">
-        <h3>LED Lighting</h3>
-
-        <div ng-repeat="company in ledlights">
-          <h3>{{company.companyname}}</h3>
-
-          <div ng-repeat="product in products | filter: {category: 'coolerled'}'">
-            <h4>{{product.name}}</h4>
-
-            <form class="form-inline">
-              <div class="form-group">
-                Existing Wattage<br/>
-                <input type="number" class="form-control" value="0">
-              </div>
-              <div class="form-group">
-                New Wattage <br/>
-                <input type="number" class="form-control" value="0">
-              </div>
-              <div class="form-group">
-                QTY<br/>
-                <input type="number" class="form-control" value="0">
-              </div>
-              <div class="form-group">
-                <label>{{product.partnum}} - {{product.name}}</label>
-              </div>
-            </form>
-            <br/>
-          </div>
-        </div>
-
-        <h3>LED Lighting Information</h3>
-
-        <form class="form-horizontal row">
-          <div class="form-group col-sm-3">
-            <div class="col-sm-5">
-              <input class="form-control" type="number" value="0">
+        <section>
+          <h3>External LED Lighting</h3>
+          <div class='row'>
+            <div class='col-sm-2'>
+              <select ng-model='selectedExtLedCompany' ng-options='el.company for el in extLedCompanyNames'>
+              </select>
             </div>
-            <label class="control-label">Daily Hours of Use</label>
+            <div class='col-sm-10'>
+              <div ng-repeat="product in products | filter: selectedExtLedCompany | filter: {category: 'extLed'}">
+                <form class="form-inline">
+                  <div class="form-group">
+                    Existing Wattage<br/>
+                    <input type="number" class="form-control" value="0">
+                  </div>
+                  <div class="form-group">
+                    New Wattage <br/>
+                    <input type="number" class="form-control" value="0">
+                  </div>
+                  <div class="form-group">
+                    QTY<br/>
+                    <input type="number" class="form-control" value="0">
+                  </div>
+                  <div class="form-group">
+                    <label>{{product.partnum}} - {{product.name}}</label>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
-        </form>
+        </section>
+        <section>
+          <h3>External LED Lighting Information</h3>
+          <form class="form-horizontal row">
+            <div class="form-group col-sm-3">
+              <div class="col-sm-5">
+                <input class="form-control" type="number" value="0">
+              </div>
+              <label class="control-label">Daily Hours of Use</label>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </tab>
+
+  <tab heading="Internal LED Lighting">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <section>
+          <h3>Internal LED Lighting</h3>
+          <div class='row'>
+            <div class='col-sm-2'>
+              <select ng-model='selectedIntLedCompany' ng-options='el.company for el in intLedCompanyNames'>
+              </select>
+            </div>
+            <div class='col-sm-10'>
+              <div ng-repeat="product in products | filter: selectedIntLedCompany | filter: {category: 'intLed'}">
+                <form class="form-inline">
+                  <div class="form-group">
+                    Existing Wattage<br/>
+                    <input type="number" class="form-control" value="0">
+                  </div>
+                  <div class="form-group">
+                    New Wattage <br/>
+                    <input type="number" class="form-control" value="0">
+                  </div>
+                  <div class="form-group">
+                    QTY<br/>
+                    <input type="number" class="form-control" value="0">
+                  </div>
+                  <div class="form-group">
+                    <label>{{product.partnum}} - {{product.name}}</label>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3>Internal LED Lighting Information</h3>
+          <form class="form-horizontal row">
+            <div class="form-group col-sm-3">
+              <div class="col-sm-5">
+                <input class="form-control" type="number" value="0">
+              </div>
+              <label class="control-label">Daily Hours of Use</label>
+            </div>
+          </form>
+        </section>
       </div>
     </div>
   </tab>
 </tabset>
+
 <button class="btn btn-default" ng-click="saveQuote()">Save Quote</button>&nbsp;<button class="btn btn-default" ng-click="createOrder()">Create Order</button>
 

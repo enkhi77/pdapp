@@ -12,12 +12,43 @@ angular.module('pdappApp')
     $scope.quotes = [];
     $scope.orders = [];
     $scope.customers = [];
+    $scope.selectedMotorCompany = null;
+    $scope.selectedAntiSweatCompany = null;
+    $scope.selectedCoolerLedCompany = null;
+    $scope.selectedExtLedCompany = null;
+    $scope.selectedIntLedCompany = null;
 
     $http.get('/api/products').success(function(productdata) {
       $scope.products = productdata;
       console.log('Products', $scope.products);
       socket.syncUpdates('products', $scope.products);
+      $scope.getCompanyForCategory('motor');
+      $scope.getCompanyForCategory('antiSweat');
+      $scope.getCompanyForCategory('coolerLed');
+      $scope.getCompanyForCategory('extLed');
+      $scope.getCompanyForCategory('intLed');
+
     });
+
+    $scope.getCompanyForCategory = function(category){
+
+      var names = $scope.products.map(function(product) {
+        category = category || 'motor';
+
+        if(product.category === category) return product.company;
+
+        return null;
+      });
+
+      names = _.compact(names);
+      names = _.unique(names);
+
+      $scope[category + 'CompanyNames'] = names.map(function(name) {
+        return {company: name};
+      });
+      // $scope.selectedCompanyName = $scope.companies[0]
+    };
+
 
     $http.get('/api/quotes').success(function(quotedata) {
       $scope.quotes = quotedata;
@@ -61,4 +92,8 @@ angular.module('pdappApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('products');
     });
+
+
+
+
   });
