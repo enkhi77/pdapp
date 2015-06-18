@@ -17,6 +17,7 @@ angular.module('pdappApp')
     $scope.quotes = [];
     $scope.orders = [];
     $scope.customers = [];
+    $scope.newProduct = {};
 
     $http.get('/api/products').success(function(productdata) {
       $scope.products = productdata;
@@ -43,6 +44,7 @@ angular.module('pdappApp')
     });
 
     $scope.addProduct = function() {
+      console.log($scope.newProduct)
       if($scope.newProduct === '') {
         return;
       }
